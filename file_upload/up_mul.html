@@ -1,0 +1,29 @@
+<html>
+	<head>
+	<meta charset = "UTF-8">
+	<style type="text/css">
+		#code{
+			position: absolute;
+			margin-top: -22px;
+			margin-left:155px;
+		}		
+	</style>
+	<script type="text/javascript">
+	function create_code () {
+		document.getElementById('code').src='code.php?n='+Math.random()*10000;
+	}
+	</script>
+</head>
+	<body>
+		<form action="upload.php"  method="POST" enctype="multipart/form-data">
+			选择文件：<input type="file" name="file">
+			<br></br>
+			输入验证码：<input type="text" name="yzm_code" maxlength="5" size="2">
+			<div><img id="code" name = "code" src = "code.php">
+				</div>
+				<a onclick="create_code();">看不清？点我换图片</a>
+			<br></br>
+			<input type="submit" value="上传">
+		</form>
+	</body>
+</html>
