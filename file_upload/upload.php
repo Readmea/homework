@@ -10,4 +10,5 @@ if($_SESSION['CODE']==$_POST['yzm_code']){
 else{
 	echo "验证码错误";
 }
+//session_destroy();
 ?> 
