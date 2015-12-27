@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>~Redrock~</title>
+	<meta http-equiv="Content-Type" content="text/html; charset = UTF-8">
+	<style type="text/css">
+
+	*{font-family: Microsoft YaHei, Helvetica, sans-serif;}
+
+	.tips{
+		text-align: center;
+		font-size: 14px;
+	}
+
+	.frame {
+		margin-top: 100px;
+		margin-left: 120px;
+		margin-right: 120px;
+	}
+
+	.frame a {
+		display: inline-block;
+		vertical-align: middle;
+		background: rgba(255,255,255,0.8);
+	}
+
+	.frame_data {
+		margin-left: auto;
+		margin-right: auto;  	
+	}
+	</style>
+
+	<script>
+		function add(){
+			var name = document.getElementById("name").value;
+			var address = document.getElementById("address").value; 
+			//动态创建节点
+			var link = document.createElement("a");
+			link.setAttribute("href",address);  //设置属性
+			link.innerHTML = name;	
+			link.style.color = "black";
+			link.style.float = "left";
+			var button = document.createElement("input");
+			button.setAttribute("type","button");
+			button.value = "删除";
+			button.style.float = "left";
+		
+			button.onclick = function(event){
+				var target;
+				if (event == null)
+				{
+					target = window.event.srcElement;
+				}else{
+					target = event.target;
+				}
+				var div = target.parentNode;
+				div.parentNode.removeChild(div);	
+
+
+				var request = new XMLHttpRequest();
+				request.open("POST","del.php");
+				var data="name="+name;
+				request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+				request.send(data);  //传数
+				
+
+				//jquery
+				// $.ajax({
+				// 	type:"POST",
+				// 	url:"",
+				// 	data: "$name",
+				// 	dataType:"text";
+				// 	success:function(data){
+				// 		if(data)
+				// 			alert("删除成功");
+				// 		else
+				// 			alert("删除失败");
+				// 	}
+					
+				// });
+			}
+			//添加生成的内容
+			var div = document.createElement("div");
+			div.appendChild(button);
+			div.insertBefore(link,button);
+			website.appendChild(div);	
+			}
+
+
+  </script>
+</head>
+<body>
+	<h2 style="color: gray;font-family:Verdana, Arial; font-family: Arial, Helvetica, sans-serif;text-shadow:1px 1px 3px gray; text-align: center;">Never give up</h2>
+	<div class="tips">红岩出品 | 必属精品</div>
+	<div class = "frame">
+		<h2 chass = "frame_title">xxxxx</h2>
+		<form  action = "add.php" method="POST" target="">
+		站点名称：<input type="text" name="name" id="name" length = "15">
+		网址：<input type="text" name="address" id="address">
+		<input type = 'button' onclick='add()'  value='添加'> 
+		<input type = 'submit' onclick="return flase" value='提交至数据库'>
+		<div class="frame_data" id ="website">
+
+	    </div>
+		</form>
+	</div>
+   		
+</body>
+</html>
