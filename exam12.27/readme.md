@@ -83,6 +83,5 @@
 <h1>T19</h1>
 <pre><code>    非关系型的数据库,NoSQL
     为了解决大规模数据集合多重数据种类带来的挑战，尤其是大数据应用难题。</code></pre>
-<p>Edit By <a href="http://mahua.jser.me">MaHua</a>
-Edit By <a href="http://mahua.jser.me">MaHua</a></p>
+<p>Edit By Yby</a>
 </body></html>
